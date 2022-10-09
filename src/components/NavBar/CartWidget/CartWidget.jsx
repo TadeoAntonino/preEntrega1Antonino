@@ -1,13 +1,13 @@
-function CartWidget(props){
+function CartWidget(){
 
-    const stylesCart = {
-        width: "40px",
-        height: "25px",
-    };
+    const cartStyles = {
+        height: "50px",
+        widht: "50px",
+    }
 
     return(
         <div>
-            <img style={stylesCart}src="https://w7.pngwing.com/pngs/225/984/png-transparent-computer-icons-shopping-cart-encapsulated-postscript-shopping-cart-angle-black-shopping.png" alt="carrito" />
+            <img style={cartStyles} src="https://e7.pngegg.com/pngimages/833/426/png-clipart-shopping-cart-shopping-cart.png" alt="carrito" />
         </div>
     );
 }

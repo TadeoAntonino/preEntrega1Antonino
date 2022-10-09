@@ -1,23 +1,23 @@
 import CartWidget from './CartWidget/CartWidget'
+import { Link } from 'react-router-dom';
+import "./NavBar.css"
 
 function NavBar (){
-    const iconStyle = {
-        height: "100px",
-        width: "120px",
-    };
+
     return(
         <>
-        <h1>Coffee Shop</h1>
-        <nav>
+        <nav className='navContainer'>
             <div>
-                <img style={iconStyle} src="https://fbcd.co/images/products/418b34198565843271c8ba55932350a3_resize.png" alt="logo del coffee shop" />
+                <img className='navLogo' src="https://fbcd.co/images/products/418b34198565843271c8ba55932350a3_resize.png" alt="logo del coffee shop" />
             </div>
+            <h1 className='navTitle'>Coffee Shop</h1>
             <ul>
-                <a href="#"><li>Café Clásico</li></a>
-                <a href="#"><li>Café de Especialidad</li></a>
-                <a href="#"><li>Otras Bebidas</li></a>
+                <Link to="/">Inicio</Link>
+                <Link to="/category/">Café clásico</Link>
+                <Link to="/category/">Café de especialidad</Link>
+                <Link to="/category/">Otras bebidas</Link>
             </ul>
-            <div>
+            <div className='cartStyles'>
                 <CartWidget />
             </div>
         </nav>
