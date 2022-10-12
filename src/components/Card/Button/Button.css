@@ -2,11 +2,10 @@
 
 .btn {
     font-family: "Montserrat", sans-serif;
-    font-weight: 550;
+    font-weight: 500;
     font-size: large;
-    display: flex;
-    flex-direction: column;
     border-radius: 5px;
     background-color: antiquewhite;
     border-style: none;
+    text-decoration: none;
 }

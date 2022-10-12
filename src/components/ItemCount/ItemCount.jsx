@@ -5,12 +5,14 @@ export default function ItemCount({stock, initial}) {
     const [count, setCount] = useState (initial);
 
     function quitar() {
-     if(count > 1)   setCount (count - 1);
+     if(count > 1)   setCount(count - 1);
         
     }
 
-    function agregar() {
-     if(count < stock)   setCount (count + 1);
+    
+    function agregar() {   
+        console.log(count, stock)
+     if(count < stock)   setCount(count + 1);
         
     }
 
@@ -18,9 +20,9 @@ export default function ItemCount({stock, initial}) {
         <div>
             <h3>Elige la cantidad</h3>
             <br />
-            <button onClick={quitar}>-</button>
+            <button onClick={()=>quitar()}>-</button>
             <div>{count}</div>
-            <button onClick={agregar}>+</button>
+            <button onClick={()=>agregar()}>+</button>
         </div>
     )
 }

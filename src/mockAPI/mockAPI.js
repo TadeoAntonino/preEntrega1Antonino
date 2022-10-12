@@ -7,7 +7,7 @@ const data = [
         detail: "Corto e intenso",
         ml: 15,
         stock: 30,
-        category: "clásicos",
+        category: "clasicos",
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ const data = [
         detail: "Clásico",
         ml: 60,
         stock: 30,
-        category: "clásicos",
+        category: "clasicos",
       },
       {
         id: 3,
@@ -27,7 +27,7 @@ const data = [
         detail: "Doble shot de sabor",
         ml: 15,
         stock: 20,
-        category: "clásicos",
+        category: "clasicos",
       },
       {
         id: 4,
@@ -37,7 +37,7 @@ const data = [
         detail: "Shot de espresso largo",
         ml: 50,
         stock: 20,
-        category: "clásicos",
+        category: "clasicos",
       },
       {
         id: 5,
@@ -47,7 +47,7 @@ const data = [
         detail: "Doble shot de espresso con agua filtrada",
         ml: 120,
         stock: 30,
-        category: "clásicos",
+        category: "clasicos",
       },
       {
         id: 6,
@@ -57,7 +57,7 @@ const data = [
         detail: "Doble shot de espresso con crema batida",
         ml: 120,
         stock: 12,
-        category: "clásicos",
+        category: "clasicos",
       },
       {
         id: 7,
@@ -67,7 +67,7 @@ const data = [
         detail: "Shot de espresso con leche texturizada",
         ml: 240,
         stock: 20,
-        category: "clásicos",
+        category: "clasicos",
       },
       {
         id: 8,
@@ -107,7 +107,7 @@ const data = [
         detail: "Doble shot de espresso con espuma de leche",
         ml: 50,
         stock: 20,
-        category: "clásicos",
+        category: "clasicos",
       },
       {
         id: 12,
@@ -117,7 +117,7 @@ const data = [
         detail: "Shot de espresso con leche texturizada y espuma de leche",
         ml: 240,
         stock: 20,
-        category: "clásicos",
+        category: "clasicos",
       },
       {
         id: 13,
@@ -256,7 +256,7 @@ const data = [
 export function getProduct (){
       return new Promise(
         (resolve) => {
-          setTimeout(() => resolve(data), 2000);
+          setTimeout(() => resolve(data), 500);
         });
     }
 
@@ -265,6 +265,16 @@ export function getDetailProduct(id) {
         let cafePedido = data.find((item) => {
           return item.id === Number(id);
         });
-        setTimeout(() => resolve(cafePedido), 1500);
+        setTimeout(() => resolve(cafePedido), 500);
       });
     }    
+
+
+export function getProductCategory (id){
+  return new Promise((resolve) => {
+    let arrayFilterProduct = data.filter(
+      (item) => item.category === id
+    );
+    setTimeout(() => resolve(arrayFilterProduct), 500);
+  });
+}

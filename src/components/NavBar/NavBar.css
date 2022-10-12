@@ -28,3 +28,23 @@
     width: 5px;
     height: 5px;
 }
+
+.linksContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.navLinks {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: antiquewhite;
+    justify-content: space-between;
+    
+}
+
+

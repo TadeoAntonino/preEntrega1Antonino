@@ -1,13 +1,14 @@
+import ItemDetail from './ItemDetail';
 import { useState, useEffect } from 'react';
 import {getDetailProduct} from '../../mockAPI/mockAPI';
-import {ItemDetail} from './ItemDetail';
 import {useParams} from 'react-router-dom';
 
 
-function ItemDetailContainer(props) {
+function ItemDetailContainer() {
 
     const [cafe, setCafe] = useState ([]);
     const {id} = useParams();
+    const {img, title, detail, ml, price, stock} = cafe;
 
     useEffect(() => {
         getDetailProduct(id).then((data) => {
@@ -17,11 +18,12 @@ function ItemDetailContainer(props) {
 
     return(
         <ItemDetail
-          img= {cafe.img}
-          title= {cafe.title}
-          detail= {cafe.detail}
-          ml= {cafe.ml}
-          price= {cafe.price}
+          img= {img}
+          title= {title}
+          detail= {detail}
+          ml= {ml}
+          price= {price}
+          stock= {stock}
         />
     )
 }

@@ -8,14 +8,14 @@ function NavBar (){
         <>
         <nav className='navContainer'>
             <div>
-                <img className='navLogo' src="https://fbcd.co/images/products/418b34198565843271c8ba55932350a3_resize.png" alt="logo del coffee shop" />
+                <img className='navLogo' src="https://i.fbcd.co/products/resized/resized-750-500/66bf70495aaf1bd998f73ac92ca931bb4dbe132a6e926435a4bbcf7f72161689.webp" alt="logo del coffee shop" />
             </div>
             <h1 className='navTitle'>Coffee Shop</h1>
-            <ul>
-                <Link to="/">Inicio</Link>
-                <Link to="/category/">Café clásico</Link>
-                <Link to="/category/">Café de especialidad</Link>
-                <Link to="/category/">Otras bebidas</Link>
+            <ul className='linksContainer'>
+                <Link className= "navLinks" to="/">Inicio</Link>
+                <Link className= "navLinks" to="/category/clasicos">Café clásico</Link>
+                <Link className= "navLinks" to="/category/especialidad">Café de especialidad</Link>
+                <Link className= "navLinks" to="/category/otras">Otras bebidas</Link>
             </ul>
             <div className='cartStyles'>
                 <CartWidget />
