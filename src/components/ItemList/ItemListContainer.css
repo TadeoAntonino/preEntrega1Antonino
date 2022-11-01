@@ -1,20 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600&family=Montserrat:wght@100;200;400&family=Nanum+Gothic:wght@400;700&family=Water+Brush&display=swap");
 
 
-.itemListContainerStyle {
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 15px 20px;
-    align-items: center;
-    flex-wrap: wrap;
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
-    background-color:  rgb(80, 49, 27);
-}
-
 .titleItemList {
     font-family: "Montserrat", sans-serif;
     color: antiquewhite;
@@ -24,4 +10,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.itemListContainerStyle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color:  rgb(255, 255, 255);
+    border-radius: 20px;
 }

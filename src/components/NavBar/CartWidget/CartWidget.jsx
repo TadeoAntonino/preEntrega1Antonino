@@ -1,13 +1,27 @@
-function CartWidget(){
+import { useContext, useState, useEffect } from 'react';
+import {cartContext} from '../../../context/context';
 
-    const cartStyles = {
-        height: "50px",
-        widht: "50px",
-    }
+function CartWidget(){
+    
+    const {cart} = useContext(cartContext);
+    const [counterItem, setCounterItem] = useState(0);
+    
+    useEffect(()=>{
+        let a = 0;
+        let newCart = [...cart];
+        newCart.forEach(item => {
+            a = a + item.count
+        })
+        setCounterItem(a);
+    },[cart]
+    )
 
     return(
         <div>
-            <img style={cartStyles} src="https://e7.pngegg.com/pngimages/833/426/png-clipart-shopping-cart-shopping-cart.png" alt="carrito" />
+            {counterItem}
+            <button>
+                🛒
+            </button>
         </div>
     );
 }

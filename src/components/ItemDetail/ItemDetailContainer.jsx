@@ -1,8 +1,8 @@
 import ItemDetail from './ItemDetail';
 import { useState, useEffect } from 'react';
-import {getDetailProduct} from '../../mockAPI/mockAPI';
+import {getDetailProduct} from '../../services/firebase';
 import {useParams} from 'react-router-dom';
-
+import './/ItemDetailContainer.css';
 
 function ItemDetailContainer() {
 
@@ -17,14 +17,17 @@ function ItemDetailContainer() {
     }, [id]);
 
     return(
-        <ItemDetail
-          img= {img}
-          title= {title}
-          detail= {detail}
-          ml= {ml}
-          price= {price}
-          stock= {stock}
-        />
+        <div className='container'>
+            <ItemDetail
+                id= {id}
+                img= {img}
+                title= {title}
+                detail= {detail}
+                ml= {ml}
+                price= {price}
+                stock= {stock}
+            />
+        </div>
     )
 }
 

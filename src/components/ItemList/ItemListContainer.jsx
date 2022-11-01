@@ -1,7 +1,7 @@
 import ItemList from "./ItemList";
 import "./ItemListContainer.css";
 import {useParams} from 'react-router-dom';
-import { getProduct, getProductCategory } from "../../mockAPI/mockAPI";
+import { getProduct, getProductCategory } from "../../services/firebase";
 import { useEffect, useState } from "react";
 
 function ItemListContainer (props){
@@ -10,18 +10,12 @@ function ItemListContainer (props){
 
     const {id} = useParams();
 
-    useEffect(
-      () => {
-          getProduct().then((data)=>{
-              setProductList(data);
-          });
-      },[]
-  )
-
     useEffect(() => {
-
+      console.log(id, "id");
         if (id === undefined) {
+          console.log("cualquier cosa");
           getProduct().then((data) => {
+            console.log(data, "data");
             setProductList(data);
           });
         } else {
@@ -43,23 +37,3 @@ function ItemListContainer (props){
 }
 
 export default ItemListContainer;
-
-
-/*
-
-function ItemListContainer(props) {
-
-  useEffect(() => {
-    if (categoryID === undefined) {
-      getCursos().then((data) => {
-        setCoursesList(data);
-      });
-    } else {
-      getCursosByCategory(categoryID).then((data) => {
-        setCoursesList(data);
-      });
-    }
-  }, [categoryID]);
-
-
-  */

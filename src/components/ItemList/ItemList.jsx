@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "../Card/Card";
+import './/ItemList.css';
 
 function ItemList (info){
     
@@ -17,12 +18,12 @@ function ItemList (info){
 
         return(
             <>
-
-            {drinkList?.length && (drinkList?.map( (product, index)=>{
-                return (<Card key={index} id={product?.id} img={product?.img} title={product?.title} price={product?.price} />)
-                }))
-            }
-    
+            <div className="itemListStyle">
+                {drinkList?.length && (drinkList?.map( (product, index)=>{
+                    return (<Card key={index} id={product?.id} img={product?.img} title={product?.title} price={product?.price} />)
+                    }))
+                }
+            </div> 
             </>
         );
 }
