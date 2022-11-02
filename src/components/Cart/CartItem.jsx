@@ -1,18 +1,25 @@
-import { cartContext } from '../../context/context'
+import React from 'react'
+import { cartContext } from '../../context/context';
 import { useContext } from 'react';
 import './/CartItem.css';
 
-const CartItem = ({id, title, img, count}) => {
-    const {deleteItem} = useContext(cartContext)
-    
-  return (
+const CartItem = ({title, img, detail, price, ml, id}) => {
+  const {eliminarItem} = useContext(cartContext);
+  console.log("algo")
 
-   <div className='container'>
-        <button onClick={()=>deleteItem(id)}>🗑</button>
-        <img src={img} alt="foto" />
-        <div className='title'>{title}</div>
-        <div className='cantidad'>{count}</div>
-   </div>
+  return(
+    <div className='container'>
+      <div>
+        <img src={img} alt="imagen" />
+      </div>
+      <div>
+        <h1>{title}</h1>
+        <p>{detail}</p>
+        <p>{ml}</p>
+        <div>{price}</div>
+      </div>
+      <button onClick={() => eliminarItem(id)} >🗑</button>
+    </div>
   )
 }
 

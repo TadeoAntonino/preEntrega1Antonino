@@ -1,25 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600&family=Montserrat:wght@100;200;400&family=Nanum+Gothic:wght@400;700&family=Water+Brush&display=swap");
 
 
-.container {
+.containerGrande {
     font-family: "Montserrat", sans-serif;
     color: black;
     background-color: rgb(255, 255, 255);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
     justify-content: start;
     align-items: center;
+    gap: 30px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
 }
 
 .precio {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-direction: row;
     justify-content: start;
     align-items: center;
     font-family: "Montserrat", sans-serif;
     color: black;
+    gap: 10px;
 }
 
 .precio h3 {

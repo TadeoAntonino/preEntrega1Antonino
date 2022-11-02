@@ -25,8 +25,23 @@ export default function CartContextProvider(props) {
             console.log("algo", newItem);
 
     }
+
+    const eliminarItem = (id) => {
+        setCart(cart.filter(element => element.id !== id))
+    }
+
+    const deleteCart = () => {
+      setCart([]);  
+    }
+
+    const precioTotal = () => {
+        let total = 0;
+        cart.forEach((e) => total += (e.count * e.price))
+        return total;
+    }
+
     return (
-        <cartContext.Provider value={{cart, addItemCount}}>
+        <cartContext.Provider value={{cart, addItemCount, eliminarItem, deleteCart, precioTotal}}>
             {props.children}
         </cartContext.Provider>
     )

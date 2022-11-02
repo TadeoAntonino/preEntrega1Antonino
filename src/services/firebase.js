@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, doc, getDoc, query, where } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, getDoc, query, where, addDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,20 +17,25 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 const db = getFirestore(firebaseApp);
 
-export function createOrder() {
-    console.log("algo");
+export async function createCompra(compras) {
+    const collectionRef = collection(db, "compras")
+    let result = await addDoc(collectionRef, compras)
+    if(result.id.length !== 0){
+        return result.id
+    }else{
+        throw new Error("No se creo la compra, intentalo de nuevo.")
+    }
 }
 
 export async function getProduct() {
     const collectionRef = collection(db, "productosCoffeeShop");
     let resultado = await getDocs(collectionRef);
-    let dataCoffeeShop = resultado.doc.map(document => {
+    let dataCoffeeShop = resultado.docs.map(document => {
         return {
             id: document.id,
             ...document.data()
         }
     })
-    console.log(dataCoffeeShop)
     return dataCoffeeShop;
 }
 

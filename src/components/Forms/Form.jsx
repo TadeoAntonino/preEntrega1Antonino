@@ -1,127 +1,130 @@
-import React from 'react'
-import './/Form.css'
-import { cartContext } from '../../context/context'
+import React from 'react';
+import './/Form.css';
+import { cartContext } from '../../context/context';
 import { useContext, useState, useEffect } from 'react';
-import {createOrder} from '../../services/firebase'
+import {createCompra} from '../../services/firebase';
 import { Link } from 'react-router-dom';
 
 
 const Form = () => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
-  const [edad, setEdad] = useState("");
+  const [mail, setMail] = useState("");
   const [celular, setCelular] = useState("");
   const [direccion, setDireccion] = useState("");
-  const [crearOrden, setCrearOrden] = useState(null);
-  const {cart, vaciarCarrito, totalPrecio} = useContext(cartContext);
+  const {cart, deleteCart, precioTotal} = useContext(cartContext);
   const [mensajeError, setMensajeError] = useState(null);
-  const [numeroOrden, setNumeroOrden] = useState("")
+  const [numOrder, setNumOrder] = useState("")
+  const [createOrder, setCreateOrder] = useState(null);
 
   useEffect(() => {
-    if(crearOrden === true){
-      let orden = [...cart]
-      orden = {
-      buyer: { nombre, apellido, edad, celular, direccion },
-      items: orden,
+    if(createOrder === true){
+      
+      let compras = [...cart]
+      compras = {
+      buyer: { nombre, apellido, mail, celular, direccion },
+      items: compras,
       date: new Date(),
-      total: totalPrecio(),
+      total: precioTotal(),
     }
       
-    createOrder(orden)
+    createCompra(compras)
       .then((data) => {
-        setNumeroOrden([data]);
-        vaciarCarrito();
+        setNumOrder([data]);
+        deleteCart();
       })
       .catch((error) => {
         setMensajeError(error.message);
       });
     }
-  }, [crearOrden]);
+  }, [createOrder]);
+   
 
-
-  function onNombreChange (evt){
-    setNombre(evt.target.value);
+  function onNombreChange (event){
+    setNombre(event.target.value);
   }
 
-  function onApellidoChange (evt){
-    setApellido(evt.target.value);
+  function onApellidoChange (event){
+    setApellido(event.target.value);
   }
 
-  function onEdadChange (evt){
-    setEdad(evt.target.value);
+  function onMailChange (event){
+    setMail(event.target.value);
   }
 
-  function onCelularChange (evt){
-    setCelular(evt.target.value);
+  function onCelularChange (event){
+    setCelular(event.target.value);
   }
 
-  function onDireccionChange (evt){
-    setDireccion(evt.target.value);
+  function onDireccionChange (event){
+    setDireccion(event.target.value);
   }
 
 
-  function onEnviar(){
-    setCrearOrden(true) 
+  function onComprar(){
+    setCreateOrder(true) 
   }
 
 
   
-  if(cart.length !== 0 || numeroOrden !== ""){
+  if(cart.length !== 0 || numOrder !== ""){
     return (
       mensajeError ? (
-        <p className="mensajeError">{mensajeError}</p>
+        <p>{mensajeError}</p>
       ) :
-      <>
+      <div>
         
         {
-          numeroOrden !== "" ? 
+          numOrder !== "" ? 
           <div className='container'>
             <h1>¡Gracias por tu compra!</h1>
             <br />
-            <p>Tu número de orden es:</p>
-            <h3>{numeroOrden}</h3>
+            <p>Tu número de compra es:</p>
+            <h3>{numOrder}</h3>
           </div>:
           
           <div className='containerForm'>
           <h2>Tus datos:</h2>
   
           <div>
-            <input  className='dataForm' type="text" onChange={evt => onNombreChange(evt)} />
+            <p className='dataType'>Nombre</p>
+            <input className='dataForm' type="text" onChange={event => onNombreChange(event)} />
           </div>
   
           <div>
-            <input  className='dataForm' type="text" onChange={evt => onApellidoChange(evt)} />
+            <p className='dataType'>Apellido</p>
+            <input className='dataForm' type="text" onChange={event => onApellidoChange(event)} />
           </div>
   
           <div>
-            
-            <input  className='dataForm' type="number" onChange={evt => onEdadChange(evt)} />
+            <p className='dataType'>E-mail</p>
+            <input className='dataForm' type="mail" onChange={event => onMailChange(event)} />
           </div>
   
           <div>
-            
-            <input  className='dataForm' type="number" onChange={evt => onCelularChange(evt)} />
+            <p className='dataType'>Número de teléfono</p>
+            <input className='dataForm' type="tel" onChange={event => onCelularChange(event)} />
           </div>
   
           <div>
-            
-            <input  className='dataForm' type="text" onChange={evt => onDireccionChange(evt)} />
+            <p className='dataType'>Dirección</p>
+            <input className='dataForm' type="text" onChange={event => onDireccionChange(event)} />
           </div>
   
   
-            <button
-            disabled={!(nombre !== "" && apellido !== "" && edad !== "" && celular !== "" && direccion !=="")}
-            onClick={evt => onEnviar(evt)}>Crear Orden</button>
+            <button className='btnComprarForm'
+            disabled={!(nombre !== "" && apellido !== "" && mail !== "" && celular !== "" && direccion !=="")}
+            onClick={event => onComprar(event)}>Comprar</button>
           
         </div>
         }
-      </>
+      </div>
     )
 
   }else{
     return(
       <>
-      <div className='carritoVacio'>
+      <div className='container'>
         <h1>¡Ops! todavía no tenés nada en tu carrito</h1>
       <Link to ="/"><button>Empezá a comprar</button></Link>
       </div>

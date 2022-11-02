@@ -2,6 +2,7 @@
 
 .card {
     font-family: "Montserrat", sans-serif;
+    color: antiquewhite;
     display: flex;
     flex-direction: column;
     align-items: center;
